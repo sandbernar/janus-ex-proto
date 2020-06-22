@@ -95,9 +95,9 @@ $(document).ready(function() {
 									$('#videojoin').removeClass('hide').show();
 									$('#registernow').removeClass('hide').show();
 
-									registerUsername();
-									// $('#register').click(registerUsername);
-									// $('#username').focus();
+									// registerUsername();
+									$('#register').click(registerUsername);
+									$('#username').focus();
 
 									
 									$('.welcome-note-wrapper').hide();
