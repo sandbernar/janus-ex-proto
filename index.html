@@ -1,87 +1,57 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Janus WebRTC Server: Video Room Demo</title>
+<title>Шёлк - прототип</title>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.4.0/adapter.min.js" ></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js" ></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-<script type="text/javascript" src="main.lib.js" ></script>
-<script type="text/javascript" src="videoroomtest.js"></script>
-<script>
-	$(function() {
-		$(".navbar-static-top").load("navbar.html", function() {
-			$(".navbar-static-top li.dropdown").addClass("active");
-			$(".navbar-static-top a[href='videoroomtest.html']").parent().addClass("active");
-		});
-		$(".footer").load("footer.html");
-	});
-</script>
+
+<script type="text/javascript" src="/js/main.lib.js" ></script>
+<script type="text/javascript" src="/js/main.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" type="text/css"/>
-<link rel="stylesheet" href="css/demo.css" type="text/css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
+<link rel="stylesheet" href="/css/main.css" type="text/css"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
+	<div class="rings"></div>
 
-<a href="https://github.com/meetecho/janus-gateway"><img style="position: absolute; top: 0; left: 0; border: 0; z-index: 1001;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+	<a href="/" class="logo">шёлк</a>
 
-<nav class="navbar navbar-default navbar-static-top">
-</nav>
 
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="page-header">
-				<h1>Plugin Demo: Video Room
-					<button class="btn btn-default" autocomplete="off" id="start">Start</button>
-				</h1>
-			</div>
-			<div class="container" id="details">
-				<div class="row">
-					<div class="col-md-12">
-						<h3>Demo details</h3>
-						<p>This demo is an example of how you can use the Video Room plugin to
-						implement a simple videoconferencing application. In particular, this
-						demo page allows you to have up to 6 active participants at the same time:
-						more participants joining the room will be instead just passive users.
-						No mixing is involved: all media are just relayed in a publisher/subscriber
-						approach. This means that the plugin acts as a SFU (Selective Forwarding Unit)
-						rather than an MCU (Multipoint Control Unit).</p>
-						<p>If you're interested in testing how simulcasting can be used within
-						the context of a videoconferencing application, just pass the
-						<code>?simulcast=true</code> query string to the url of this page and
-						reload it. If you're using a browser that does support simulcasting
-						(Chrome or Firefox) and the room is configured to use VP8, you'll
-						send multiple qualities of the video you're capturing. Notice that
-						simulcasting will only occur if the browser thinks there is enough
-						bandwidth, so you'll have to play with the Bandwidth selector to
-						increase it. New buttons to play with the feature will automatically
-						appear for viewers when receiving any simulcasted stream. Notice that
-						no simulcast support is needed for watching, only for publishing.</p>
-						<p>To use the demo, just insert a username to join the default room that
-						is configured. This will add you to the list of participants, and allow
-						you to automatically send your audio/video frames and receive the other
-						participants' feeds. The other participants will appear in separate
-						panels, whose title will be the names they chose when registering at
-						the demo.</p>
-						<p>Press the <code>Start</code> button above to launch the demo.</p>
-					</div>
+			<div class="welcome-note-wrapper">
+				<h3 class="note" id="initialNote">Версия сайта 0.1 для теста комнаты переговоров</h3>
+				<div class="come-in">
+					<span class="come-in-btn" id="start">Войти</span>
+					<!-- <button class="btn btn-default" autocomplete="off" id="start">Войти</button> -->
+					<span class="arrow">
+						<svg viewBox="0 0 129 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M54.8477 8.03755L61.2394 1.93726C63.9458 -0.645752 68.3221 -0.645752 70.9997 1.93726L126.97 55.3286C129.677 57.9116 129.677 62.0884 126.97 64.6439L70.9997 118.063C68.2933 120.646 63.917 120.646 61.2394 118.063L54.8477 111.962C52.1125 109.352 52.1701 105.093 54.9628 102.537L89.6565 70.9915H6.90994C3.08068 70.9915 0 68.0513 0 64.3966V55.6034C0 51.9487 3.08068 49.0085 6.90994 49.0085H89.6565L54.9628 17.4628C52.1413 14.9073 52.0837 10.648 54.8477 8.03755Z" fill="black"/>
+						</svg>
+					</span>
 				</div>
 			</div>
+
+
+			<div class="room-note-wrapper">
+				<span class="note">в комнате выставленно ограничение до 6 человек</span>
+				<a href="#" id="stop" class="stop-btn">ЗАВЕРШИТЬ</a>
+			</div>
+
 			<div class="container hide" id="videojoin">
 				<div class="row">
 					<span class="label label-info" id="you"></span>
 					<div class="col-md-12" id="controls">
-						<div class="input-group margin-bottom-md hide" id="registernow">
+						<div class="input-group margin-bottom-md" id="registernow">
 							<span class="input-group-addon">@</span>
-							<input autocomplete="off" class="form-control" type="text" placeholder="Choose a display name" id="username" onkeypress="return checkEnter(this, event);" />
+							<input autocomplete="off" class="form-control" type="text" placeholder="Choose a display name" id="username" onkeypress="return checkEnter(this, event);" value="silk" />
 							<span class="input-group-btn">
 								<button class="btn btn-success" autocomplete="off" id="register">Join the room</button>
 							</span>
@@ -89,29 +59,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="container hide" id="videos">
+			<div class="container-fluid hide main-block" id="videos">
 				<div class="row">
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Local Video <span class="label label-primary hide" id="publisher"></span>
-									<div class="btn-group btn-group-xs pull-right hide">
-										<div class="btn-group btn-group-xs">
-											<button id="bitrateset" autocomplete="off" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-												Bandwidth<span class="caret"></span>
-											</button>
-											<ul id="bitrate" class="dropdown-menu" role="menu">
-												<li><a href="#" id="0">No limit</a></li>
-												<li><a href="#" id="128">Cap to 128kbit</a></li>
-												<li><a href="#" id="256">Cap to 256kbit</a></li>
-												<li><a href="#" id="512">Cap to 512kbit</a></li>
-												<li><a href="#" id="1024">Cap to 1mbit</a></li>
-												<li><a href="#" id="1500">Cap to 1.5mbit</a></li>
-												<li><a href="#" id="2000">Cap to 2mbit</a></li>
-											</ul>
-										</div>
-									</div>
-								</h3>
+								<h3 class="panel-title">Это я</h3>
 							</div>
 							<div class="panel-body" id="videolocal"></div>
 						</div>
@@ -119,7 +72,7 @@
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Remote Video #1 <span class="label label-info hide" id="remote1"></span></h3>
+								<h3 class="panel-title">#2 <span class="label label-info hide" id="remote1"></span></h3>
 							</div>
 							<div class="panel-body relative" id="videoremote1"></div>
 						</div>
@@ -127,7 +80,7 @@
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Remote Video #2 <span class="label label-info hide" id="remote2"></span></h3>
+								<h3 class="panel-title">#3 <span class="label label-info hide" id="remote2"></span></h3>
 							</div>
 							<div class="panel-body relative" id="videoremote2"></div>
 						</div>
@@ -137,7 +90,7 @@
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Remote Video #3 <span class="label label-info hide" id="remote3"></span></h3>
+								<h3 class="panel-title">#4 <span class="label label-info hide" id="remote3"></span></h3>
 							</div>
 							<div class="panel-body relative" id="videoremote3"></div>
 						</div>
@@ -145,7 +98,7 @@
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Remote Video #4 <span class="label label-info hide" id="remote4"></span></h3>
+								<h3 class="panel-title">#5 <span class="label label-info hide" id="remote4"></span></h3>
 							</div>
 							<div class="panel-body relative" id="videoremote4"></div>
 						</div>
@@ -153,7 +106,7 @@
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<h3 class="panel-title">Remote Video #5 <span class="label label-info hide" id="remote5"></span></h3>
+								<h3 class="panel-title">#6 <span class="label label-info hide" id="remote5"></span></h3>
 							</div>
 							<div class="panel-body relative" id="videoremote5"></div>
 						</div>
@@ -163,9 +116,6 @@
 		</div>
 	</div>
 
-	<hr>
-	<div class="footer">
-	</div>
 </div>
 
 </body>
