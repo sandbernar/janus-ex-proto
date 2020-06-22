@@ -94,13 +94,24 @@ $(document).ready(function() {
 									// Prepare the username registration
 									$('#videojoin').removeClass('hide').show();
 									$('#registernow').removeClass('hide').show();
-									$('#register').click(registerUsername);
-									$('#username').focus();
+
+									registerUsername();
+									// $('#register').click(registerUsername);
+									// $('#username').focus();
+
+									
+									$('.welcome-note-wrapper').hide();
+									$('.room-note-wrapper').show();
+
 									$('#start').removeAttr('disabled').html("Stop")
 										.click(function() {
 											$(this).attr('disabled', true);
 											janus.destroy();
 										});
+									$('#stop').click(function() {
+										$(this).attr('disabled', true);
+										janus.destroy();
+									});
 								},
 								error: function(error) {
 									Janus.error("  -- Error attaching plugin...", error);
@@ -281,12 +292,13 @@ $(document).ready(function() {
 									$('#videojoin').hide();
 									$('#videos').removeClass('hide').show();
 									if($('#myvideo').length === 0) {
-										$('#videolocal').append('<video class="rounded centered" id="myvideo" width="100%" height="100%" autoplay playsinline muted="muted"/>');
+										$('#videolocal').append('<video class="centered" id="myvideo" width="100%" height="100%" autoplay playsinline muted="muted"/>');
 										// Add a 'mute' button
-										$('#videolocal').append('<button class="btn btn-warning btn-xs" id="mute" style="position: absolute; bottom: 0px; left: 0px; margin: 15px;">Mute</button>');
+										$('#videolocal').append('<button class="btn btn-control btn-mute" id="mute">Mute</button>');
 										$('#mute').click(toggleMute);
 										// Add an 'unpublish' button
-										$('#videolocal').append('<button class="btn btn-warning btn-xs" id="unpublish" style="position: absolute; bottom: 0px; right: 0px; margin: 15px;">Unpublish</button>');
+										$('#videolocal').addClass('video-on');
+										$('#videolocal').append('<button class="btn btn-control btn-unpublish" id="unpublish">Unpublish</button>');
 										$('#unpublish').click(unpublishOwnFeed);
 									}
 									$('#publisher').removeClass('hide').html(myusername).show();
@@ -325,7 +337,9 @@ $(document).ready(function() {
 								oncleanup: function() {
 									Janus.log(" ::: Got a cleanup notification: we are unpublished now :::");
 									mystream = null;
-									$('#videolocal').html('<button id="publish" class="btn btn-primary">Publish</button>');
+									$('#videolocal').html('<button id="publish" class="btn btn-control btn-unpublish activated">Publish</button>');
+									// $('#videolocal').append('<button class="btn btn-control btn-mute" id="mute">Mute</button>');
+
 									$('#publish').click(function() { publishOwnFeed(true); });
 									$("#videolocal").parent().parent().unblock();
 									$('#bitrate').parent().parent().addClass('hide');
@@ -441,12 +455,16 @@ function toggleMute() {
 	else
 		sfutest.muteAudio();
 	muted = sfutest.isAudioMuted();
+	$('#mute').toggleClass('activated');
 	$('#mute').html(muted ? "Unmute" : "Mute");
 }
 
 function unpublishOwnFeed() {
 	// Unpublish our stream
+	$('#videolocal').removeClass('video-on');
 	$('#unpublish').attr('disabled', true).unbind('click');
+	$('#unpublish').toggleClass('activated');
+
 	var unpublish = { request: "unpublish" };
 	sfutest.send({ message: unpublish });
 }
@@ -569,8 +587,8 @@ function newRemoteFeed(id, display, audio, video) {
 				if($('#remotevideo'+remoteFeed.rfindex).length === 0) {
 					addButtons = true;
 					// No remote video yet
-					$('#videoremote'+remoteFeed.rfindex).append('<video class="rounded centered" id="waitingvideo' + remoteFeed.rfindex + '" width=320 height=240 />');
-					$('#videoremote'+remoteFeed.rfindex).append('<video class="rounded centered relative hide" id="remotevideo' + remoteFeed.rfindex + '" width="100%" height="100%" autoplay playsinline/>');
+					$('#videoremote'+remoteFeed.rfindex).append('<video class="centered" id="waitingvideo' + remoteFeed.rfindex + '" width=320 height=240 />');
+					$('#videoremote'+remoteFeed.rfindex).append('<video class="centered relative hide" id="remotevideo' + remoteFeed.rfindex + '" width="100%" height="100%" autoplay playsinline/>');
 					$('#videoremote'+remoteFeed.rfindex).append(
 						'<span class="label label-primary hide" id="curres'+remoteFeed.rfindex+'" style="position: absolute; bottom: 0px; left: 0px; margin: 15px;"></span>' +
 						'<span class="label label-info hide" id="curbitrate'+remoteFeed.rfindex+'" style="position: absolute; bottom: 0px; right: 0px; margin: 15px;"></span>');
