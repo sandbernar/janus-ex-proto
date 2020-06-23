@@ -89,7 +89,7 @@ body {
 }
 .come-in-btn {
     font-family: 'Lovelace';
-    font-size: 495px;
+    font-size: 448px;
     background: none;
     border: none;
     color: #000;
@@ -101,6 +101,11 @@ body {
 	cursor: pointer;
 }
 
+.come-in svg{
+	width: 100%;
+	height: 100%;
+}
+
 .come-in:hover svg path{
 	fill: #fff;
 }
@@ -109,7 +114,8 @@ body {
  	display: inline-block;
  	vertical-align: middle;
  	padding-left: 34px;
- 	top: -97px;
+ 	top: -100px;
+ 	width: 237px;
  	position: relative;
  }
 
@@ -171,6 +177,7 @@ body {
 	background-repeat: no-repeat;
 	-webkit-background-size: 40%;
 	border: 1px solid #000;
+	overflow: hidden;
 }
 .panel.panel-default .panel-body.video-on {
 	border: none;
@@ -186,7 +193,7 @@ body {
 
 .btn-control {
 	position: absolute;
-    bottom: 52px;
+    bottom: 0px;
     left: 50%;
     margin: 15px;
     font-size: 0;
@@ -200,7 +207,18 @@ body {
     background-size: auto;
     padding: 8px;
     box-sizing: content-box;
+    transition: all .2s ease;
+    opacity: 0;
 }
+
+.panel-body:hover .btn-control,
+.panel-body:active .btn-control {
+	bottom: 50px;
+    opacity: 1;
+}
+
+
+
 
 .btn.btn-control:hover,
 .btn.btn-control:focus,
@@ -259,6 +277,7 @@ body {
 	span.arrow {
 		top: -14px;
 		padding-left: 9px;
+		width: 55px;
 	}
 	span.arrow svg{
 		width: 41px;
@@ -279,4 +298,12 @@ body {
 		height: 280px;
 	}
 
+	.btn-control {
+		bottom: -25px;
+	}
+
+	.panel-body:hover .btn-control,
+	.panel-body:active .btn-control {
+		bottom: 5px;
+	}
 }
