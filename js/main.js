@@ -92,10 +92,10 @@ $(document).ready(function() {
 									Janus.log("Plugin attached! (" + sfutest.getPlugin() + ", id=" + sfutest.getId() + ")");
 									Janus.log("  -- This is a publisher/manager");
 									// Prepare the username registration
+									registerUsername();
 									$('#videojoin').removeClass('hide').show();
 									$('#registernow').removeClass('hide').show();
 
-									registerUsername();
 									// $('#register').click(registerUsername);
 									// $('#username').focus();
 
