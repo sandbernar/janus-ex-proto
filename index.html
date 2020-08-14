@@ -48,6 +48,53 @@
 	        webvisor:true,
 	        ecommerce:"dataLayer"
 	   });
+	   $(function() {
+		var server = null;
+		if(window.location.protocol === 'http:')
+			server = "http://" + window.location.hostname + "/admin";
+		else
+			server = "https://" + window.location.hostname + "/admin";
+
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": server,
+			"method": "POST",
+			"headers": {
+				"connection": "keep-alive",
+				"accept": "application/json, text/javascript, */*; q=0.01",
+				"content-type": "application/json",
+				"sec-fetch-site": "cross-site",
+				"sec-fetch-mode": "cors",
+				"accept-language": "ru,en-US;q=0.9,en;q=0.8"
+			},
+			"processData": false,
+			"data": {
+				"janus": "message_plugin",
+				"transaction": "LNGflgy5ZRoj",
+				"admin_secret": "",
+				"plugin": "janus.plugin.videoroom",
+				"request": {
+					"request": "create",
+					"room": 0,
+					"permanent": false
+				}
+			}
+		};
+		$("#createRoom").on("click", function(){
+			$("#createResponse").text("");
+
+			var requestSettings = JSON.parse(JSON.stringify(settings));
+
+			requestSettings.data.admin_secret = $('input[name="secretToken"]').val();
+			requestSettings.data.request.room = +$('input[name="roomId"]').val();
+			requestSettings.data = JSON.stringify(requestSettings.data);
+
+			$.ajax(requestSettings).done(function(response) {
+				$("#createResponse").text(JSON.stringify(response));
+			});
+		});
+	});
 	</script>
 	<noscript><div><img src="https://mc.yandex.ru/watch/65909053" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 	<!-- /Yandex.Metrika counter -->
@@ -79,7 +126,28 @@
 					</span>
 				</div>
 			</div>
-
+			<div>
+				<h3>create room</h3>
+				<br>
+				<label for="roomId">
+					RoomId
+				</label>
+				<input type="integer" name="roomId">
+				<br>
+				<label for="secretToken">
+					secretToken
+				</label>
+				<input type="text" name="secretToken" value="janusoverlord">
+				<br>
+				<br>
+				<br>
+				<button class="btn btn-success" autocomplete="off" id="createRoom">Create Room</button>
+				<hr>
+				<h5>
+					Response
+				</h5>
+				<pre id="createResponse"></pre>
+			</div>
 
 			<div class="room-note-wrapper">
 				<span class="note">в комнате выставленно ограничение до 6 человек</span>
