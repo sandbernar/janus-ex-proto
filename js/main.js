@@ -48,6 +48,9 @@ if(window.location.protocol === 'http:')
 else
 	server = "https://" + window.location.hostname + "/janus";
 
+//server = "wss://" + window.location.hostname + ":8989";
+server = "wss://" + window.location.hostname + ":8189";
+
 var janus = null;
 var sfutest = null;
 var opaqueId = "videoroomtest-"+Janus.randomString(12);
