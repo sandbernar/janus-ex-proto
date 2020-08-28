@@ -126,6 +126,7 @@ body {
 	z-index: 1;
 	display: none;
 	margin-bottom: 47px;
+	text-align: right;
 }
 .room-note-wrapper .note {
 	display: inline-block;
@@ -135,7 +136,6 @@ body {
 .stop-btn {
 	font-size: 24px;
 	display: inline-block;
-	float: right;
 	border-radius: 34px;
 	background-color: #fff;
 	font-size: 24px;
