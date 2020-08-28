@@ -42,11 +42,13 @@
 // in the presented order. The first working server will be used for
 // the whole session.
 //
-var server = null;
-if(window.location.protocol === 'http:')
-	server = "http://" + window.location.hostname + "/janus";
-else
-	server = "https://" + window.location.hostname + "/janus";
+
+
+var server = "https://" + window.location.hostname + "/janus";
+// turn on wss connection instead of https
+server = "wss://" + window.location.hostname + ":8189";
+
+
 
 var janus = null;
 var sfutest = null;
