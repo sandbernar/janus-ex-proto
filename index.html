@@ -101,23 +101,27 @@
 
 	<div class="rings"></div>
 
-	<a href="/" class="logo">шёлк</a>
+	<!-- <a href="/" class="logo">шёлк</a> -->
+	<a href="/" class="logo">丝绸之路</a>
 
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="welcome-note-wrapper">
-				<h3 class="note" id="initialNote">Версия сайта 0.1 для теста комнаты переговоров</h3>
+				<h3 class="note" id="initialNote">会议室测试原型-启用摄像头和麦克风连接</h3>
+				<h4 class="note">Прототип для теста комнаты переговоров - разрешите подключение камеры и микрофона</h4>
 				<div class="row">
-					<div class="col-md-4" style="margin-left: 50px;">
+					<div class="col-md-4" style="margin-left: 50px; display: none;">
 						<label for="">Номер комнаты</label>
 						<input type="text" id="roomNumber" name="room_number" value="1" placeholder="Номер команыт" class="form-control" onkeyup="updateRoom()">
 					</div>
 				</div>
 				<div class="come-in">
 
-					<span class="come-in-btn" id="start">Войти</span>
+					<!-- <span class="come-in-btn" id="start">Войти</span> -->
+					<span class="come-in-btn" id="start">登入</span>
+
 					<!-- <button class="btn btn-default" autocomplete="off" id="start">Войти</button> -->
 					<span class="arrow">
 						<svg viewBox="0 0 129 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -125,6 +129,7 @@
 						</svg>
 					</span>
 				</div>
+
 			</div>
 
 			<div style="display: none">
@@ -151,8 +156,9 @@
 			</div>
 
 			<div class="room-note-wrapper">
-				<span class="note">в комнате выставленно ограничение до 6 человек</span>
-				<a href="#" id="stop" class="stop-btn">ЗАВЕРШИТЬ</a>
+				<!-- <span class="note">в комнате выставленно ограничение до 6 человек</span> -->
+				<!-- <a href="#" id="stop" class="stop-btn">ЗАВЕРШИТЬ</a> -->
+				<a href="#" id="stop" class="stop-btn">注销</a>
 			</div>
 
 			<div class="container hide" id="videojoin">
@@ -161,10 +167,11 @@
 					<div class="col-md-12" id="controls">
 						<div class="input-group margin-bottom-md" id="registernow">
 							<span class="input-group-addon">@</span>
-							<input autocomplete="off" class="form-control" type="text" placeholder="Choose a display name" id="username" onkeypress="return checkEnter(this, event);" value="" />
+							<input autocomplete="off" class="form-control" type="text" placeholder="Choose a display name" id="username" onkeypress="return checkEnter(this, event);" value="test" />
 
 							<span class="input-group-btn">
-								<button class="btn btn-success" autocomplete="off" id="register">Join the room</button>
+								<!-- <button class="btn btn-success" autocomplete="off" id="register">Join the room</button> -->
+								<button class="btn btn-success" autocomplete="off" id="register">参加会议</button>
 							</span>
 						</div>
 					</div>
