@@ -7,8 +7,8 @@ Janus.init({
    }});
 
 var janus = new Janus({
-	server: 'ws://localhost:8188',
-	// server: 'http://localhost:8088/janus',
+	// server: 'ws://localhost:8188',
+	server: 'http://localhost:8088/janus',
 	success: function() {
 		console.log('connected!');
 	},

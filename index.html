@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173593351-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-173593351-1');
-	</script> -->
-
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0">
@@ -25,84 +15,19 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
-	<script type="text/javascript" src="/js/main.lib.js" ></script>
-	<script type="text/javascript" src="/js/main.js?v=2"></script>
+	<script type="text/javascript" src="silk-speaker-secret-321/js/main.lib.js" ></script>
+	<script type="text/javascript" src="silk-speaker-secret-321/js/main.js?v=2"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" type="text/css"/>
-	<link rel="stylesheet" href="/css/main.css?v=2" type="text/css"/>
+	<link rel="stylesheet" href="silk-speaker-secret-321/css/main.css?v=2" type="text/css"/>
 
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
 
 </head>
 <body>
-
-	<!-- Yandex.Metrika counter -->
-	<script type="text/javascript" >
-	   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-	   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-	   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-	   ym(65909053, "init", {
-	        clickmap:true,
-	        trackLinks:true,
-	        accurateTrackBounce:true,
-	        webvisor:true,
-	        ecommerce:"dataLayer"
-	   });
-	   $(function() {
-		var server = null;
-		if(window.location.protocol === 'http:')
-			server = "http://" + window.location.hostname + "/admin";
-		else
-			server = "https://" + window.location.hostname + "/admin";
-
-		var settings = {
-			"async": true,
-			"crossDomain": true,
-			"url": server,
-			"method": "POST",
-			"headers": {
-				"connection": "keep-alive",
-				"accept": "application/json, text/javascript, */*; q=0.01",
-				"content-type": "application/json",
-				"sec-fetch-site": "cross-site",
-				"sec-fetch-mode": "cors",
-				"accept-language": "ru,en-US;q=0.9,en;q=0.8"
-			},
-			"processData": false,
-			"data": {
-				"janus": "message_plugin",
-				"transaction": "LNGflgy5ZRoj",
-				"admin_secret": "",
-				"plugin": "janus.plugin.videoroom",
-				"request": {
-					"request": "create",
-					"room": 0,
-					"permanent": false
-				}
-			}
-		};
-		$("#createRoom").on("click", function(){
-			$("#createResponse").text("");
-
-			var requestSettings = JSON.parse(JSON.stringify(settings));
-
-			requestSettings.data.admin_secret = $('input[name="secretToken"]').val();
-			requestSettings.data.request.room = +$('input[name="roomId"]').val();
-			requestSettings.data = JSON.stringify(requestSettings.data);
-
-			$.ajax(requestSettings).done(function(response) {
-				$("#createResponse").text(JSON.stringify(response));
-			});
-		});
-	});
-	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/65909053" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-	<!-- /Yandex.Metrika counter -->
-
 	<div class="rings"></div>
 
-	<!-- <a href="/" class="logo">шёлк</a> -->
-	<a href="/" class="logo">丝绸之路</a>
+	<!-- <a href="silk-speaker-secret-321/" class="logo">шёлк</a> -->
+	<a href="silk-speaker-secret-321/" class="logo">丝绸之路</a>
 
 
 <div class="container-fluid">

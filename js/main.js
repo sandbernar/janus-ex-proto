@@ -47,6 +47,7 @@
 var server = "https://" + window.location.hostname + "/janus";
 // turn on wss connection instead of https
 server = "wss://" + window.location.hostname + ":8189";
+server = "/janus";
 
 
 

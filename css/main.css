@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'Lovelace';
     src: local('Lovelace Medium'), local('Lovelace-Medium'),
-        url('/fonts/Lovelace-Medium.woff2') format('woff2'),
-        url('/fonts/Lovelace-Medium.woff') format('woff'),
-        url('/fonts/Lovelace-Medium.ttf') format('truetype');
+        url('../fonts/Lovelace-Medium.woff2') format('woff2'),
+        url('../fonts/Lovelace-Medium.woff') format('woff'),
+        url('../fonts/Lovelace-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
