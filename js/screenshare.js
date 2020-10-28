@@ -62,6 +62,7 @@ var spinner = null;
 
 // Just an helper to generate random usernames
 function randomString(len, charSet) {
+	return "Screen 1";
     charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var randomString = '';
     for (var i = 0; i < len; i++) {
@@ -75,14 +76,15 @@ function randomString(len, charSet) {
 $(document).ready(function() {
 	// Initialize the library (all console debuggers enabled)
 	Janus.init({debug: "all", callback: function() {
+		// Make sure the browser supports WebRTC
+		if(!Janus.isWebrtcSupported()) {
+			bootbox.alert("No WebRTC support... ");
+			return;
+		}
 		// Use a button to start the demo
 		$('#start').one('click', function() {
 			$(this).attr('disabled', true).unbind('click');
-			// Make sure the browser supports WebRTC
-			if(!Janus.isWebrtcSupported()) {
-				bootbox.alert("No WebRTC support... ");
-				return;
-			}
+			
 			// Create session
 			janus = new Janus(
 				{
@@ -104,7 +106,7 @@ $(document).ready(function() {
 									$('#joinnow').removeClass('hide').show();
 									$('#join').click(joinScreen);
 									$('#desc').focus();
-									$('#start').removeAttr('disabled').html("Stop")
+									$('#start').removeAttr('disabled').html("Стоп")
 										.click(function() {
 											$(this).attr('disabled', true);
 											janus.destroy();
@@ -135,9 +137,10 @@ $(document).ready(function() {
 									Janus.log("Janus says our WebRTC PeerConnection is " + (on ? "up" : "down") + " now");
 									$("#screencapture").parent().unblock();
 									if(on) {
-										bootbox.alert("Your screen sharing session just started: pass the <b>" + room + "</b> session identifier to those who want to attend.");
+										bootbox.alert("Ваш экран транслируется в вебинаре!");
+										// bootbox.alert("Your screen sharing session just started: pass the <b>" + room + "</b> session identifier to those who want to attend.");
 									} else {
-										bootbox.alert("Your screen sharing session just stopped.", function() {
+										bootbox.alert("Ваш экран больше не транслируется.", function() {
 											janus.destroy();
 											window.location.reload();
 										});
