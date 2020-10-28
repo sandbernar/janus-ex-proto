@@ -393,6 +393,8 @@ function registerUsername() {
 		$('#username').attr('disabled', true);
 		$('#register').attr('disabled', true).unbind('click');
 		var username = $('#username').val();
+		// 
+		username = getUsernameFromUrl();
 		if(username === "") {
 			$('#you')
 				.removeClass().addClass('label label-warning')
@@ -418,6 +420,11 @@ function registerUsername() {
 		myusername = username;
 		sfutest.send({ message: register });
 	}
+}
+
+function getUsernameFromUrl() {
+	let params = new URLSearchParams(location.search);
+	return params.get('name');
 }
 
 function publishOwnFeed(useAudio) {
