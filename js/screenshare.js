@@ -166,7 +166,7 @@ $(document).ready(function() {
 														success: function(jsep) {
 															Janus.debug("Got publisher SDP!");
 															Janus.debug(jsep);
-															var publish = { "request": "configure", "audio": true, "video": true };
+															var publish = { "request": "configure", "audio": false, "video": true };
 															screentest.send({"message": publish, "jsep": jsep});
 														},
 														error: function(error) {
@@ -343,7 +343,7 @@ function shareScreen() {
 		if(event != undefined && event != null) {
 			// Our own screen sharing session has been created, join it
 			room = result["room"];
-			room = 1;
+			room = 1; // defines room if or session
 			Janus.log("Screen sharing session created: " + room);
 			myusername = randomString(12);
 			var register = { "request": "join", "room": room, "ptype": "publisher", "display": myusername };
