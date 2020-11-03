@@ -25,18 +25,18 @@
 
 </head>
 <body>
-	<div class="rings"></div>
+	<!-- <div class="rings"></div> -->
 
 	<!-- <a href="silk-speaker-secret-321/" class="logo">шёлк</a> -->
-	<a href="silk-speaker-secret-321/" class="logo">丝绸之路</a>
+	<!-- <a href="silk-speaker-secret-321/" class="logo">丝绸之路</a> -->
 
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-12" style="text-align: center;">
 			<div class="welcome-note-wrapper">
-				<h3 class="note" id="initialNote">会议室测试原型-启用摄像头和麦克风连接</h3>
-				<h4 class="note">Прототип для теста комнаты переговоров - разрешите подключение камеры и микрофона</h4>
+				<!-- <h3 class="note" id="initialNote">会议室测试原型-启用摄像头和麦克风连接</h3> -->
+				<h4 class="note">Комната спикера - разрешите подключение камеры и микрофона</h4>
 				<div class="row">
 					<div class="col-md-4" style="margin-left: 50px; display: none;">
 						<label for="">Номер комнаты</label>
@@ -44,24 +44,26 @@
 					</div>
 				</div>
 				<div class="come-in">
-
+					<button class="btn btn-blue" id="start">Начать вебинар</button>
+					
+					<!-- <span class="" id="start">Войти</span> -->
 					<!-- <span class="come-in-btn" id="start">Войти</span> -->
-					<span class="come-in-btn" id="start">登入</span>
+					<!-- <span class="come-in-btn" id="start">登入</span> -->
 
 					<!-- <button class="btn btn-default" autocomplete="off" id="start">Войти</button> -->
-					<span class="arrow">
+					<!-- <span class="arrow">
 						<svg viewBox="0 0 129 120" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M54.8477 8.03755L61.2394 1.93726C63.9458 -0.645752 68.3221 -0.645752 70.9997 1.93726L126.97 55.3286C129.677 57.9116 129.677 62.0884 126.97 64.6439L70.9997 118.063C68.2933 120.646 63.917 120.646 61.2394 118.063L54.8477 111.962C52.1125 109.352 52.1701 105.093 54.9628 102.537L89.6565 70.9915H6.90994C3.08068 70.9915 0 68.0513 0 64.3966V55.6034C0 51.9487 3.08068 49.0085 6.90994 49.0085H89.6565L54.9628 17.4628C52.1413 14.9073 52.0837 10.648 54.8477 8.03755Z" fill="black"/>
 						</svg>
-					</span>
+					</span> -->
 				</div>
 
 			</div>
 
 			<div class="room-note-wrapper" style="text-align: right;">
 				<!-- <span class="note">в комнате выставленно ограничение до 6 человек</span> -->
-				<!-- <a href="#" id="stop" class="stop-btn">ЗАВЕРШИТЬ</a> -->
-				<a href="#" id="stop" class="stop-btn" style="float: none;">注销</a>
+				<a href="#" id="stop" class="btn btn-blue stop-btn">ЗАВЕРШИТЬ</a>
+				<!-- <a href="#" id="stop" class="stop-btn" style="float: none;">注销</a> -->
 			</div>
 
 			<div class="container hide" id="videojoin">
@@ -73,8 +75,8 @@
 							<input autocomplete="off" class="form-control" type="text" placeholder="Choose a display name" id="username" onkeypress="return checkEnter(this, event);" value="test" />
 
 							<span class="input-group-btn">
-								<!-- <button class="btn btn-success" autocomplete="off" id="register">Join the room</button> -->
-								<button class="btn btn-success" autocomplete="off" id="register">参加会议</button>
+								<button class="btn btn-success" autocomplete="off" id="register">Join the room</button>
+								<!-- <button class="btn btn-success" autocomplete="off" id="register">参加会议</button> -->
 							</span>
 						</div>
 					</div>
@@ -188,6 +190,20 @@
 	</div>
 
 </div>
-
+<style>
+	.btn-blue:active,
+	.btn-blue {
+		background: linear-gradient(228.44deg, #fff -186.11%, #00b0ff 74.57%);
+		border: none;
+		outline: none;
+		padding: 10px 30px;
+		border-radius: 8px;
+		color: #fff;
+		font-size: 24px;
+	}
+	.btn-blue:hover {
+		color: #fff;
+	}
+</style>
 </body>
 </html>
